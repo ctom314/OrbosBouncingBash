@@ -39,6 +39,8 @@ public class GameButtonHandler : MonoBehaviour
 
         // Load next level
         SceneManager.LoadScene(nextLevel);
+
+        Time.timeScale = 1;
     }
 
     public void nextLevel()

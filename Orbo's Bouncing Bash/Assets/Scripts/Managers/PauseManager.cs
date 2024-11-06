@@ -16,6 +16,7 @@ public class PauseManager : MonoBehaviour
     private float prevTimeScale;
     private WinManager wm;
     private GameOverManager gom;
+    private GameButtonHandler gbh;
 
     // Pause menu time vars to ensure pressing Q does not pause and quit game at the same time
     private float pausePressTime = 0f;
@@ -27,6 +28,7 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
         wm = GetComponent<WinManager>();
         gom = GetComponent<GameOverManager>();
+        gbh = GetComponent<GameButtonHandler>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,12 @@ public class PauseManager : MonoBehaviour
             // Resume game
             resumeGame();
             isPaused = false;
+        }
+
+        if (isPaused && Input.GetKeyDown(KeyCode.R))
+        {
+            // Restart game
+            gbh.playAgain();
         }
     }
 

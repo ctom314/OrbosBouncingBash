@@ -42,9 +42,6 @@ public class Ball : MonoBehaviour
         reflectTime = Time.deltaTime;
 
         checkBounds();
-
-        // TEMPORARY
-        resetLevel();
     }
 
     // Update is called once per frame
@@ -113,14 +110,6 @@ public class Ball : MonoBehaviour
         {
             // 60* Up left
             rb.velocity = new Vector2(-3, 1).normalized * speed;
-        }
-    }
-
-    private void resetLevel()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Level01");
         }
     }
 
