@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -37,5 +38,17 @@ public class MenuManager : MonoBehaviour
         {
             mkbh.backToMainMenu();
         }
+    }
+
+    public void loadGame()
+    {
+        // Reset Persistent Data
+        PersistantData.instance.resetData();
+
+        // Choose a random level
+        string nextLevel = GetComponent<LevelManager>().chooseLevel();
+        SceneManager.LoadScene(nextLevel);
+
+        Time.timeScale = 1;
     }
 }

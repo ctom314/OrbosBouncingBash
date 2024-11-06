@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 483632893}
   - component: {fileID: 483632892}
   - component: {fileID: 483632891}
+  - component: {fileID: 483632894}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -527,6 +528,20 @@ MonoBehaviour:
   guideMenu: {fileID: 278527880}
   mainMenuActive: 1
   guideMenuActive: 0
+--- !u!114 &483632894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483632889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192b5cbedc52f154f8f67e0079a4bb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - Level01
 --- !u!1 &614985137
 GameObject:
   m_ObjectHideFlags: 0

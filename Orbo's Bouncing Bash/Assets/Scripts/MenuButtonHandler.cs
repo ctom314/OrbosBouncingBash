@@ -21,8 +21,7 @@ public class MenuButtonHandler : MonoBehaviour
 
     public void playGame()
     {
-        SceneManager.LoadScene("Level01");
-        Time.timeScale = 1;
+        mm.loadGame();
     }
 
     // Guide Menu

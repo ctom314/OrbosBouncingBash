@@ -7,18 +7,28 @@ using UnityEngine.SceneManagement;
 public class Ball : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float ballStartX;
+    public float ballStartY;
 
     private Rigidbody2D rb;
     private float screenHalfWidth;
     private float screenHalfHeight;
+
+    // Reflect timer
+    private float reflectTime = 0.0f;
+    private float reflectDuration = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Set initial velocity
-        rb.velocity = new Vector2(2, 2).normalized * speed;
+        // Get ball start position
+        ballStartX = transform.position.x;
+        ballStartY = transform.position.y;
+
+        // Wait then launch ball
+        StartCoroutine(startLogic());
 
         // Get camera bounds
         Camera cam = Camera.main;
@@ -28,6 +38,9 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        // Set reflect timer
+        reflectTime = Time.deltaTime;
+
         checkBounds();
 
         // TEMPORARY
@@ -57,10 +70,49 @@ public class Ball : MonoBehaviour
         }
 
         // If hitting the side of paddle, keep y direction
-        else if (collision.gameObject.CompareTag("PaddleSide"))
+        else if (collision.gameObject.CompareTag("PaddleSide") && reflectTime > reflectDuration)
         {
             // Reflect x direction, keep y direction
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+
+            // Reset reflect timer
+            reflectTime = 0.0f;
+        }
+    }
+
+    public void setLaunchDirection()
+    {
+        // Set initial velocity. Pick random direction
+        int choice = UnityEngine.Random.Range(0, 6);
+        if (choice == 0)
+        {
+            // 45* Up right
+            rb.velocity = new Vector2(2, 2).normalized * speed;
+        }
+        else if (choice == 1)
+        {
+            // 45* Up left
+            rb.velocity = new Vector2(-2, 2).normalized * speed;
+        }
+        else if (choice == 2)
+        {
+            // 30* Up right
+            rb.velocity = new Vector2(1, 2).normalized * speed;
+        }
+        else if (choice == 3)
+        {
+            // 30* Up left
+            rb.velocity = new Vector2(-1, 2).normalized * speed;
+        }
+        else if (choice == 4)
+        {
+            // 60* Up right
+            rb.velocity = new Vector2(3, 1).normalized * speed;
+        }
+        else
+        {
+            // 60* Up left
+            rb.velocity = new Vector2(-3, 1).normalized * speed;
         }
     }
 
@@ -93,5 +145,14 @@ public class Ball : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    private IEnumerator startLogic()
+    {
+        // Wait 1 second
+        yield return new WaitForSeconds(1.0f);
+
+        // Launch ball
+        setLaunchDirection();
     }
 }

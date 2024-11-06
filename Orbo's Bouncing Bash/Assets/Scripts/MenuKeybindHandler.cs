@@ -24,8 +24,7 @@ public class MenuKeybindHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Level01");
-            Time.timeScale = 1;
+            mm.loadGame();
         }
     }
 

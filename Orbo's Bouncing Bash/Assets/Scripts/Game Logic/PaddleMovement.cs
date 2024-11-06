@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PaddleMovement : MonoBehaviour
 {
     public float speed = 10.0f;
+    public bool canMove = true;
 
     private float paddleWidth;
     private float screenHalfWidth;
@@ -24,7 +26,10 @@ public class PaddleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movePaddle();
+        if (canMove)
+        {
+            movePaddle();
+        }
     }
 
     private void movePaddle()
