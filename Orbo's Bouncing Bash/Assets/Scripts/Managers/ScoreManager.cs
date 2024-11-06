@@ -23,13 +23,13 @@ public class ScoreManager : MonoBehaviour
 
     private void updateScore()
     {
-        // Cap score if over 4 digits
-        if (score > 9999)
+        // Cap score if over 5 digits
+        if (score > 99999)
         {
-            score = 9999;
+            score = 99999;
         }
 
-        scoreText.text = "Score: " + score.ToString("0000");
+        scoreText.text = "Score: " + score.ToString("00000");
     }
 
     public void addScore(int amount)

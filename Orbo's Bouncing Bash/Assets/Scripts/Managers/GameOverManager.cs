@@ -42,6 +42,6 @@ public class GameOverManager : MonoBehaviour
         gameOverScreen.SetActive(true);
 
         // Set score text
-        scoreText.text = "Score: " + GetComponent<ScoreManager>().score.ToString("0000");
+        scoreText.text = "Score: " + GetComponent<ScoreManager>().score.ToString("00000");
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PaddleMovement : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PaddleMovement : MonoBehaviour
 
     private float paddleWidth;
     private float screenHalfWidth;
+
+    // Controller input
+    private Vector2 moveInput;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +36,15 @@ public class PaddleMovement : MonoBehaviour
         }
     }
 
+    // Get Controller input
+    private void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
+
     private void movePaddle()
     {
-        float hInput = Input.GetAxis("Horizontal");
+        float hInput = Input.GetAxis("Horizontal") + moveInput.x;
 
         // Move paddle
         Vector3 pos = transform.position + Vector3.right * hInput * speed * Time.deltaTime;

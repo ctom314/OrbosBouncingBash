@@ -42,6 +42,6 @@ public class WinManager : MonoBehaviour
         winScreen.SetActive(true);
 
         // Set score text
-        scoreText.text = "Current Score: " + GetComponent<ScoreManager>().score.ToString("0000");
+        scoreText.text = "Current Score: " + GetComponent<ScoreManager>().score.ToString("00000");
     }
 }
