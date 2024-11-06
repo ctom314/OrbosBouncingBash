@@ -13,10 +13,14 @@ public class GameOverManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public bool isGameOver;
 
+    private PowerupManager pm;
+
     // Start is called before the first frame update
     void Start()
     {
         isGameOver = false;
+
+        pm = GetComponent<PowerupManager>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,9 @@ public class GameOverManager : MonoBehaviour
     public void triggerGameOver()
     {
         isGameOver = true;
+
+        // Cancel any active powerups
+        pm.cancelPowerup();
 
         // Unload ball
         ball.SetActive(false);

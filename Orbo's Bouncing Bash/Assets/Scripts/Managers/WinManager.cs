@@ -13,10 +13,14 @@ public class WinManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public bool isWin;
 
+    private PowerupManager pm;
+
     // Start is called before the first frame update
     void Start()
     {
         isWin = false;
+
+        pm = GetComponent<PowerupManager>();
     }
 
     // Update is called once per frame
@@ -29,11 +33,21 @@ public class WinManager : MonoBehaviour
     {
         isWin = true;
 
+        // Cancel any active powerups
+        pm.cancelPowerup();
+
         // Unload ball
         ball.SetActive(false);
 
         // Disable paddle movement
         paddle.GetComponent<PaddleMovement>().canMove = false;
+
+        // Destroy any powerups
+        GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+        foreach (GameObject powerup in powerups)
+        {
+            Destroy(powerup);
+        }
 
         // Show overlay
         darkScreenOverlay.SetActive(true);

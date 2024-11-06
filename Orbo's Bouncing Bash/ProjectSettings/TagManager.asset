@@ -9,6 +9,7 @@ TagManager:
   - OutOfBounds
   - PaddleSide
   - Brick
+  - Powerup
   layers:
   - Default
   - TransparentFX

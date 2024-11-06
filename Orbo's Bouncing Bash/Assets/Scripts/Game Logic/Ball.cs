@@ -14,6 +14,8 @@ public class Ball : MonoBehaviour
     private float screenHalfWidth;
     private float screenHalfHeight;
 
+    private float minYVelocity = 0.5f;
+
     // Reflect timer
     private float reflectTime = 0.0f;
     private float reflectDuration = 0.1f;
@@ -123,6 +125,13 @@ public class Ball : MonoBehaviour
             // Reverse x velocity
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             pos.x = Mathf.Clamp(pos.x, -screenHalfWidth, screenHalfWidth);
+
+            // Ensure ball cannot bounce back and forth indefinitely
+            if (Mathf.Abs(rb.velocity.y) < minYVelocity)
+            {
+                // Set velocity to minimum y velocity in same direction
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Sign(rb.velocity.y) * minYVelocity);
+            }
         }
 
         // Check top bounds

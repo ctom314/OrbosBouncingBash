@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
@@ -17,6 +18,9 @@ public class PauseManager : MonoBehaviour
     private WinManager wm;
     private GameOverManager gom;
     private GameButtonHandler gbh;
+
+    // Controller support
+    private Controls controls;
 
     // Pause menu time vars to ensure pressing Q does not pause and quit game at the same time
     private float pausePressTime = 0f;
@@ -34,14 +38,56 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: Only allow pausing when the game is not over
         pauseMenuButtons();
     }
+
+    // ----- For controller support -----
+    private void Awake()
+    {
+        controls = new Controls();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+        controls.Player.Pause.performed += OnPausePress;
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.Pause.performed -= OnPausePress;
+        controls.Disable();
+    }
+
+    private void OnPausePress(InputAction.CallbackContext context)
+    {
+        togglePause();
+    }
+
+    private void togglePause()
+    {
+        if (!wm.isWin && !gom.isGameOver)
+        {
+            if (!isPaused)
+            {
+                pauseGame();
+                isPaused = true;
+                pausePressTime = Time.unscaledTime;
+            }
+            else
+            {
+                resumeGame();
+                isPaused = false;
+            }
+        }
+    }
+
+    // --------------------------------------
 
     public void pauseMenuButtons()
     {
         // Only allow pausing when the game is not over
-        if (Input.GetKeyDown(KeyCode.Q) && !wm.isWin && !gom.isGameOver)
+        if ((Input.GetKeyDown(KeyCode.Q)) && !wm.isWin && !gom.isGameOver)
         {
             if (!isPaused)
             {

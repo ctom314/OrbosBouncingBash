@@ -6,11 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public GameObject ball;
     public List<GameObject> bricks;
+    public int ballDamage = 1;
 
     // Brick sprites
     public List<Sprite> bricksNormal;
     public List<Sprite> bricksLightCrack;
     public List<Sprite> bricksHeavyCrack;
+
+    // UI: Controls
+    public GameObject controlsUI;
 
     private GameKeybindHandler gkh;
     private WinManager wm;
@@ -25,6 +29,9 @@ public class GameManager : MonoBehaviour
         gkh = GetComponent<GameKeybindHandler>();
         wm = GetComponent<WinManager>();
         gom = GetComponent<GameOverManager>();
+
+        // Controls UI display
+        StartCoroutine(controlsUIdisplay());
     }
 
     // Update is called once per frame
@@ -67,6 +74,18 @@ public class GameManager : MonoBehaviour
     public bool allBricksDestroyed()
     {
         return bricks.Count == 0;
+    }
+
+    private IEnumerator controlsUIdisplay()
+    {
+        // Show controls UI
+        controlsUI.SetActive(true);
+
+        // Wait
+        yield return new WaitForSeconds(10);
+
+        // Hide controls UI
+        controlsUI.SetActive(false);
     }
 
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PersistantData : MonoBehaviour
 {
+    // This Script will be attached to a PersistantData Object to store data between scenes.
+    // It uses the Singleton pattern to ensure only one instance of this class exists.
+    // On launch, it will move itself to a "DontDestroyOnLoad" scene.
+    // Using the "PersistantData.instance" property, other scripts can access the data stored in this class.
+
     public static PersistantData instance { get; private set; }
 
     public int score { get; private set; } = 0;

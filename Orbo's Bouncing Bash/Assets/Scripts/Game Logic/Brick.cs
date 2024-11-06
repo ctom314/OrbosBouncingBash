@@ -5,11 +5,12 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public int scoreBaseAmount = 10;
-    public float powerupChance = 0.25f;
     public GameObject[] powerups;
     public GameManager gameManager;
 
     private ScoreManager sm;
+    private PowerupManager pm;
+
     private SpriteRenderer sr;
     private int brickType;
     private int hp = 1;
@@ -20,6 +21,7 @@ public class Brick : MonoBehaviour
     void Start()
     {
         sm = gameManager.GetComponent<ScoreManager>();
+        pm = gameManager.GetComponent<PowerupManager>();
         sr = GetComponent<SpriteRenderer>();
 
         // Randomize HP
@@ -38,17 +40,37 @@ public class Brick : MonoBehaviour
 
     public void TakeDamage()
     {
-        hp--;
+        hp -= gameManager.ballDamage;
         if (hp <= 0)
         {
             // Remove brick from list
             gameManager.bricks.Remove(gameObject);
+
+            // Try to spawn powerup if one is not already active or spawned
+            if (!pm.powerupActive && !pm.powerupSpawned)
+            {
+                powerupSpawning();
+            }
 
             // Destroy the brick
             Destroy(gameObject);
 
             // Award score
             sm.addScore(scoreAmount);
+        }
+    }
+
+    private void powerupSpawning()
+    {
+        float random = Random.Range(0.0f, 1.0f);
+        float threshold = 1 - pm.powerupChance;
+
+        // Spawn random powerup if threshold is met
+        if (random >= threshold)
+        {
+            int randomPowerup = Random.Range(0, powerups.Length);
+            Instantiate(powerups[randomPowerup], transform.position, Quaternion.identity);
+            pm.powerupSpawned = true;
         }
     }
 
@@ -94,7 +116,6 @@ public class Brick : MonoBehaviour
             TakeDamage();
             updateBrickTexture();
 
-            // TODO: Spawn powerup chance
         }
     }
 }
