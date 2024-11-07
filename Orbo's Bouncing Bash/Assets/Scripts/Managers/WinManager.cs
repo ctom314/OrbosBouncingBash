@@ -23,12 +23,6 @@ public class WinManager : MonoBehaviour
         pm = GetComponent<PowerupManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void triggerWin()
     {
         isWin = true;

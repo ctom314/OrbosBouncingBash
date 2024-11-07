@@ -23,12 +23,6 @@ public class GameOverManager : MonoBehaviour
         pm = GetComponent<PowerupManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void triggerGameOver()
     {
         isGameOver = true;

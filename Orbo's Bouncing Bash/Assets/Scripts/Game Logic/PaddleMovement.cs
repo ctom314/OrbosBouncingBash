@@ -44,7 +44,7 @@ public class PaddleMovement : MonoBehaviour
 
     private void movePaddle()
     {
-        float hInput = Input.GetAxis("Horizontal") + moveInput.x;
+        float hInput = Input.GetAxisRaw("Horizontal") + moveInput.x;
 
         // Move paddle
         Vector3 pos = transform.position + Vector3.right * hInput * speed * Time.deltaTime;

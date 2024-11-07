@@ -6,6 +6,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public int score;
+    public int scoreCap = 99999;
     public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
@@ -23,10 +24,10 @@ public class ScoreManager : MonoBehaviour
 
     private void updateScore()
     {
-        // Cap score if over 5 digits
-        if (score > 99999)
+        // Cap score if over the limit
+        if (score > scoreCap)
         {
-            score = 99999;
+            score = scoreCap;
         }
 
         scoreText.text = "Score: " + score.ToString("00000");

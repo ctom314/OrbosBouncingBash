@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public List<Sprite> bricksNormal;
     public List<Sprite> bricksLightCrack;
     public List<Sprite> bricksHeavyCrack;
+    public List<Sprite> bricksMetal;
+    public List<Sprite> bricksSpecial;
 
     // UI: Controls
     public GameObject controlsUI;
@@ -69,6 +71,16 @@ public class GameManager : MonoBehaviour
     public Sprite getHeavyCrackBrick(int id)
     {
         return bricksHeavyCrack[id];
+    }
+
+    public Sprite getMetalBrick(int id)
+    {
+        return bricksMetal[id];
+    }
+
+    public Sprite getSpecialBrick(int id)
+    {
+        return bricksSpecial[id];
     }
 
     public bool allBricksDestroyed()

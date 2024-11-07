@@ -162,4 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMult: 2
-  duration: 5
+  duration: 10

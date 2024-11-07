@@ -8,8 +8,10 @@ public class MenuManager : MonoBehaviour
     // Menu objs
     public GameObject mainMenu;
 
-    // Info
+    // Guide Menu & Pages
     public GameObject guideMenu;
+    public GameObject bricksPage;
+    public GameObject effectsPage;
 
     // Menu Bools
     public bool mainMenuActive = true;
@@ -36,6 +38,7 @@ public class MenuManager : MonoBehaviour
         }
         else if (!mainMenuActive && guideMenuActive)
         {
+            mkbh.toggleInfoPages();
             mkbh.backToMainMenu();
         }
     }

@@ -21,12 +21,6 @@ public class LivesManager : MonoBehaviour
         updateLivesDisplay();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void LoseLife()
     {
         // Get which life to disable
@@ -37,7 +31,7 @@ public class LivesManager : MonoBehaviour
 
         lives--;
 
-        // Update persistant data
+        // Update persistent data
         PersistantData.instance.setLives(lives);
     }
 
@@ -48,6 +42,7 @@ public class LivesManager : MonoBehaviour
 
     public void updateLivesDisplay()
     {
+        // Set lives images based on num lives
         for (int i = 0; i < livesDisplay.Length; i++)
         {
             if (i < lives)

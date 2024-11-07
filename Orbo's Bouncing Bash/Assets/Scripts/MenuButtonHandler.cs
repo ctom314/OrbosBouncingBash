@@ -24,6 +24,20 @@ public class MenuButtonHandler : MonoBehaviour
         mm.loadGame();
     }
 
+    public void returnToMainMenu()
+    {
+        mm.mainMenuActive = true;
+        mm.guideMenuActive = false;
+
+        // Reset guide menu
+        mm.guideMenu.SetActive(false);
+        mm.bricksPage.SetActive(true);
+        mm.effectsPage.SetActive(false);
+
+        // Show main menu
+        mm.mainMenu.SetActive(true);
+    }
+
     // Guide Menu
     public void loadGuideMenu()
     {
@@ -37,16 +51,27 @@ public class MenuButtonHandler : MonoBehaviour
         mm.guideMenu.SetActive(true);
     }
 
-    public void returnToMainMenu()
+    public void showBricksPage()
     {
-        mm.mainMenuActive = true;
-        mm.guideMenuActive = false;
+        mm.mainMenuActive = false;
+        mm.guideMenuActive = true;
 
-        // Hide guide menu
-        mm.guideMenu.SetActive(false);
+        // Hide effects page
+        mm.effectsPage.SetActive(false);
 
-        // Show main menu
-        mm.mainMenu.SetActive(true);
+        // Show bricks page
+        mm.bricksPage.SetActive(true);
     }
 
+    public void showEffectsPage()
+    {
+        mm.mainMenuActive = false;
+        mm.guideMenuActive = true;
+
+        // Hide bricks page
+        mm.bricksPage.SetActive(false);
+
+        // Show effects page
+        mm.effectsPage.SetActive(true);
+    }
 }

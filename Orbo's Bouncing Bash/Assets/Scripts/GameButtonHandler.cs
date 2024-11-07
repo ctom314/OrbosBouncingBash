@@ -32,10 +32,8 @@ public class GameButtonHandler : MonoBehaviour
         // Reset Persistant Data
         PersistantData.instance.resetData();
 
-        // TODO: Switch chooseLevel to chooseLevelNoRepeat
         string curLevel = SceneManager.GetActiveScene().name;
-        //string nextLevel = lm.chooseLevelNoRepeat(curLevel);
-        string nextLevel = lm.chooseLevel();
+        string nextLevel = lm.chooseLevelNoRepeat(curLevel);
 
         // Load next level
         SceneManager.LoadScene(nextLevel);
@@ -45,12 +43,8 @@ public class GameButtonHandler : MonoBehaviour
 
     public void nextLevel()
     {
-        // TODO: Switch chooseLevel to chooseLevelNoRepeat
-        // TODO: Carry over score to new scenes
-
         string curLevel = SceneManager.GetActiveScene().name;
-        //string nextLevel = lm.chooseLevelNoRepeat(curLevel);
-        string nextLevel = lm.chooseLevel();
+        string nextLevel = lm.chooseLevelNoRepeat(curLevel);
 
         // Load next level
         SceneManager.LoadScene(nextLevel);

@@ -7,17 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     public List<string> levels;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Special and Metal brick spawn chance
+    public float specialBrickChance = 0.05f;
 
     public string chooseLevel()
     {

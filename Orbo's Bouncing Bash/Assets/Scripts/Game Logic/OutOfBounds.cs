@@ -11,6 +11,7 @@ public class OutOfBounds : MonoBehaviour
     // Managers
     private GameManager gm;
     private LivesManager lm;
+    private PowerupManager pm;
     private GameOverManager gom;
 
     private Ball ballComp;
@@ -22,6 +23,7 @@ public class OutOfBounds : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         lm = gm.GetComponent<LivesManager>();
         gom = gm.GetComponent<GameOverManager>();
+        pm = gm.GetComponent<PowerupManager>();
 
         ballComp = ballObj.GetComponent<Ball>();
     }
@@ -49,6 +51,7 @@ public class OutOfBounds : MonoBehaviour
         {
             // For any powerups that may fall out of bounds
             Destroy(collision.gameObject);
+            pm.powerupSpawned = false;
         }
     }
 

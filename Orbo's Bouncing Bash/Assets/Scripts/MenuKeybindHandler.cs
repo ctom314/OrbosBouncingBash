@@ -37,6 +37,16 @@ public class MenuKeybindHandler : MonoBehaviour
         }
     }
 
+    public void backToMainMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            mbh.returnToMainMenu();
+            menuChangeTime = Time.unscaledTime;
+        }
+    }
+
+    // Guide Menu
     public void guideMenuButton()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -47,12 +57,20 @@ public class MenuKeybindHandler : MonoBehaviour
         }
     }
 
-    public void backToMainMenu()
+    public void toggleInfoPages()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            mbh.returnToMainMenu();
-            menuChangeTime = Time.unscaledTime;
+            if (mm.bricksPage.activeSelf)
+            {
+                // Go to effects page
+                mbh.showEffectsPage();
+            }
+            else if (mm.effectsPage.activeSelf)
+            {
+                // Go to bricks page
+                mbh.showBricksPage();
+            }
         }
     }
 }

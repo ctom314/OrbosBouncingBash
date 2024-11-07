@@ -58,6 +58,7 @@ public class Ball : MonoBehaviour
         // Bounce off paddle upwards
         if (collision.gameObject.CompareTag("Paddle"))
         {
+            // Get hit position on paddle
             Vector2 paddlePos = collision.transform.position;
             float hitPos = (transform.position.x - paddlePos.x) / (collision.collider.bounds.size.x / 2);
 

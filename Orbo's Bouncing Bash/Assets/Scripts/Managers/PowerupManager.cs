@@ -97,6 +97,9 @@ public class PowerupManager : MonoBehaviour
     {
         // Show powerup display
         showPowerupDisplay();
+        
+        // Setup slider
+        powerupDuration.maxValue = duration;
 
         // Update powerup title (powerupType starts from 1)
         powerupTitle.text = powerupNames[type - 1];
