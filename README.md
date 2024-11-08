@@ -33,7 +33,7 @@ Other useful controls will be shown next to the respective buttons. Mouse can al
 
 ## <img src="https://github.com/user-attachments/assets/011fe71f-f0d6-45b6-8eb0-07533ce11fb2" width=176 />     <img src="https://github.com/user-attachments/assets/924ab60f-89ae-4ffd-acae-285ad44c074a" width=64 />
 
-[![View the Demo on YouTube](https://img.youtube.com/vi/j4JIMepwgpI/0.jpg)](https://www.youtube.com/watch?v=j4JIMepwgpI)
+[![View the Demo on YouTube](https://img.youtube.com/vi/FEJwelpe8UU/0.jpg)](https://www.youtube.com/watch?v=FEJwelpe8UU)
 
 
 
